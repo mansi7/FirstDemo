@@ -1,0 +1,173 @@
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<style type="text/css">
+	#bottom{
+		background-color: black;
+color: white;
+font-size: 20px;
+	}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">My Movies</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      
+      <li><a href="#"></a></li>
+      <li><a href="#bottom">About Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h2 align="center">
+  Check out Our latest Movies Collection
+  </h2>
+</div>
+  
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="aveng.jpg" alt="...">
+    </a>
+  </div>
+ 
+   <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="replica.jpg" alt="...">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="good.jpg" alt="...">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="elios.jpg" alt="...">
+    </a>
+  </div>
+ 
+<br>
+</div>
+
+ <div>
+
+<div class="page-header">
+  <h2 align="center">
+  	search here for Movies.........
+  </h2>
+</div>
+
+<center>
+<div class="form-group" style="width: 700px; border: double;">
+  
+  <input type="text" class="form-control" placeholder="E.g Harry potter" aria-describedby="basic-addon1" onkeyup="getanswer(document.getElementById('qurybox').value)" id="qurybox">
+</div>
+</center>
+
+	
+	 <div id="answer"></div> 
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script> 
+<script> var data;
+function getanswer(q){
+$.get("https://www.omdbapi.com/?s="+q+"&apikey=e0620bd4", function(rawdata){
+var rawstring =JSON.stringify(rawdata);
+data =JSON.parse(rawstring);
+var title = data.Search[0].Title;
+var year = data.Search[0].Year; 
+var imdburl="https://www.imdb.com/title/"+data.Search[0].imdbID+"/";
+
+
+var posterurl =data.Search[0].Poster;
+document.getElementById('answer').innerHTML="<h1>"+title+"</h1><br> <img src= '"+posterurl+"'<br><h3> Year Released:"+year+"</h3> <br> <h3> <a href='"+imdburl+"'target='_blank'>Movie Details</a></h3>"; });
+ }</script>
+
+</div>
+ 
+<br><br><br><br>
+     
+ 
+<div id="bottom">
+	<footer class="text-white">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center  text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">About My Movies</h5> and streaming content online – including cast, production crew and personal biographies, plot summaries, trivia, fan and critical reviews, and ratings.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+         
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link </a>
+          </li>
+          <li>
+            <a href="#!">Link </a>
+          </li>
+         
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  
+
+  <div class="footer-copyright text-center py-3">© Copyright
+    
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</div>
+</body>
+</html>
